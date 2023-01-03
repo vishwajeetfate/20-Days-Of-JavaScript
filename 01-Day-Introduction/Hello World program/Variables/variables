@@ -1,29 +1,43 @@
 // it's better to use "let" insted of "var"
 document.write("addition of two numbers");  
-document.write("\n");
+document.write ("<br>");
 var a = 12;  
 var b = 23;  
 var c=a+b;  
 document.write(c);  
-document.write("\n");
+document.write ("<br>");
 
 document.write("subtraction of two numbers"); 
-document.write("\n"); 
+document.write ("<br>"); 
 var f = 12;  
 var e= 23;  
 var d=e-f;  
 document.write(d);  
-document.write("\n");
+document.write ("<br>");
   
 document.write("multiplication of two numbers");   
-document.write("\n");
+document.write ("<br>");
 var z=a*b;  
 document.write(z);  
-document.write("\n");
+document.write ("<br>");
 
 document.write("division of two numbers");  
-document.write("\n");
+document.write ("<br>");
 var y=a/b;  
 document.write(y); 
-document.write("\n");
+console.log("\n");
+document.write ("<br>");
+
+document.write ("changing value of variable");
+document.write ("<br>");
+
+//changing variable value 
+let k=1213;
+document.write(k);
+document.write ("<br>");
+k = "Hey you just change value of k ";
+document.write(k);
+
+
+
 
