@@ -1,0 +1,55 @@
+body {
+    text-align: center;
+  }
+  
+  #choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hands {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hand {
+    height: 150px;
+    width: 150px;
+  }
+  
+  #rock {
+      background: url(rock.svg) no-repeat;
+      background-size: contain;
+  }
+  #scissors {
+      background: url(scissors.svg) no-repeat;
+      background-size: contain;
+  }
+  #paper {
+      background: url(paper.svg) no-repeat;
+      background-size: contain;
+  }
+  
+  #player-hand {
+    background-position: center;
+  }
+  #computer-hand {
+    background-position: center;
+  }
+  
+  #choices button {
+    font-size: 32px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #choices button:hover {
+    background-color: #3e8e41;
+  }
+  
