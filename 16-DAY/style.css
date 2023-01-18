@@ -1,0 +1,33 @@
+body {
+    font-family: sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("multfilm-shou-simpsons-personazh-20th-century-fox-art-ris-15.jpg");
+    }
+  #countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0e2c4c;
+    font-size: 70px;
+    width: 200px;
+    height: 200px;
+    background-color: #e7d9fc;
+    border-radius: 50%;
+  }
+  .action-list {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  button {
+    border: none;
+    background-color: #e7d9fc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
