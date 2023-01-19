@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traffic Racer</title>
+  <style>
+    /* Add styles for the game container */
+    #game {
+  width: 80%; /* Set a fixed width for the game container */
+  margin: 0 auto; /* Center the game container on the page */
+  position: relative; /* Position the game elements relative to the game container */
+  background-image: url('image.jpg'); /* Add the background image */
+  background-size: cover; /* Scale the image to cover the entire element */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}
+    
+    /* Add styles for the road */
+    #road {
+      width: 60%; /* Make the road the full width of the game container */
+      height: 800px; /* Set the height of the road */
+      background-color: black; /* Set the background color of the road */
+    }
+    /* Add styles for the player's car */
+    #car {
+      position: absolute; /* Position the car absolute to the game container */
+      bottom: 0; /* Align the car to the bottom of the road */
+      left: 50%; /* Center the car horizontally on the road */
+      transform: translateX(-50%); /* Center the car vertically on the road */
+      width: 50px; /* Set the width and height of the car */
+      height: 100px;
+      background-color: red; /* Set the background color of the car */
+    }
+    /* Add styles for the enemy cars */
+    .enemy {
+      position: absolute; /* Position the enemy cars absolute to the game container */
+      top: -100px; /* Start the enemy cars off the top of the screen */
+      width: 50px; /* Set the width and height of the enemy cars */
+      height: 100px;
+      background-color: blue; /* Set the background color of the enemy cars */
+    }
+  </style>
+</head>
+<body>
+  <h1>Traffic Racer</h1>
+  <p>Use the left and right arrow keys to move the car and avoid hitting the enemy cars.</p>
+  <div id="game">
+    <div id="road"></div>
+    <div id="car"></div>
+  </div>
+  <script>
+    // Get the car and road elements
+    var car = document.getElementById("car");
+    var road = document.getElementById("road");
 
+    // Set the starting position of the car
+    var carX = road.offsetWidth / 2 - car.offsetWidth / 2;
+    car.style.left = carX + "px";
+
+    // Add event listeners to move the car when the arrow keys are pressed
+    document.addEventListener("keydown", moveCar);
+
+    function moveCar(event) {
+      if (event.keyCode === 37) {
+        // Move the car left
+        carX -= 10;
+        if(carX < 0) carX = 0;
+        car.style.left = carX + "px";
+      } else if (event.keyCode === 39) {
+        // Move the car right
+        carX += 10
+        if(carX > road.offsetWidth - car.offsetWidth) carX = road.offsetWidth - car.offsetWidth;
+        car.style.left = carX + "px";
+      }
+    }
+
+    // Function to create and move the enemy cars
+    function createEnemy() {
+      // Create a new enemy car element
+      var enemy = document.createElement("div");
+      enemy.className = "enemy";
+      
+      // Set a random starting position for the enemy car
+      var enemyX = Math.floor(Math.random() * (road.offsetWidth - enemy.offsetWidth));
+      enemy.style.left = enemyX + "px";
+      
+      // Move the enemy car down the road
+      var enemyY = -100;
+      var enemySpeed = Math.floor(Math.random() * 10) + 5;
+      var moveEnemy = setInterval(function() {
+        enemyY += enemySpeed;
+        enemy.style.top = enemyY + "px";
+        
+        // Check for collision with the player's car
+        if (enemy.offsetLeft < car.offsetLeft + car.offsetWidth &&
+            enemy.offsetLeft + enemy.offsetWidth > car.offsetLeft &&
+            enemy.offsetTop < car.offsetTop + car.offsetHeight &&
+            enemy.offsetTop + enemy.offsetHeight > car.offsetTop) {
+          clearInterval(moveEnemy);
+          alert("Game Over!");
+          restart();
+        }
+        
+        // Remove the enemy car when it goes off the bottom of the screen
+        if (enemyY > road.offsetHeight) {
+          road.removeChild(enemy);
+          clearInterval(moveEnemy);
+        }
+      }, 10);
+      
+      // Add the enemy car to the road
+      road.appendChild(enemy);
+    }
+    
+    // Create new enemy cars at random intervals
+    setInterval(createEnemy, 1000);
+    
+    function restart() {
+      location.reload();
+    }
+  </script>
+</body>
+</html>
